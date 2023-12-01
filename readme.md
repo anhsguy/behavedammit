@@ -14,7 +14,29 @@ john_mac@MikeMac welcome-to-docker %
 3. docker build -t behavedammit_image .
 4. docker run behavedammit_image --1GB
 
-View detail on container or PC terminal: Hello World! 2+3= 5 Type: Sedan Color: Blue
+View detail on container or PC terminal: 
+      18
+      Feature: Incrementor Functionality # features/tests.feature:1
+      
+        Scenario: Increment by a fixed stride            # features/tests.feature:3
+          Given a stride of 5 is set                     # features/steps/tests.py:6
+          When the incrementor function is applied to 10 # features/steps/tests.py:10
+          Then the result should be 15                   # features/steps/tests.py:14
+      
+        Scenario: Decrement by a fixed stride            # features/tests.feature:8
+          Given a stride of -2 is set                    # features/steps/tests.py:6
+          When the incrementor function is applied to 20 # features/steps/tests.py:10
+          Then the result should be 18                   # features/steps/tests.py:14
+      
+        Scenario: Do nothing to the number               # features/tests.feature:13
+          Given a stride of 0 is set                     # features/steps/tests.py:6
+          When the incrementor function is applied to 10 # features/steps/tests.py:10
+          Then the result should be 10                   # features/steps/tests.py:14
+      
+      1 feature passed, 0 failed, 0 skipped
+      3 scenarios passed, 0 failed, 0 skipped
+      9 steps passed, 0 failed, 0 skipped, 0 undefined
+      Took 0m0.004s
 
 Steps to push local to hub:
 
