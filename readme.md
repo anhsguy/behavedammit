@@ -12,7 +12,7 @@ john_mac@MikeMac welcome-to-docker %
 1. PC local: git clone https://github.com/anhsguy/behavedammit.git
 2. cd behavedammit
 3. docker build -t behavedammit_image .
-4. docker run behavedammit_image --1.1GB
+4. docker run behavedammit_image --1GB
 
 View detail on container or PC terminal: Hello World! 2+3= 5 Type: Sedan Color: Blue
 
@@ -23,8 +23,8 @@ Steps to push local to hub:
 
 2. docker login > rename: docker tag behavedammit_image anhsguy792/behavedammit_image
 
-3. To hub: docker push anhsguy792/behavedammit_image:latest
+3. To hub: docker push anhsguy792/behavedammit_image:latest  > docker local >Actions > push to hub
 
 4. run: docker run anhsguy792/behavedammit_image
 
-remove any image: docker rmi behavedammit_image or anhsguy792/behavedammit_image
+remove any image: docker rmi behavedammit_image or docker rmi anhsguy792/behavedammit_image
