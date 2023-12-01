@@ -1,6 +1,8 @@
 Version control (gitHub) steps:
 1. Git from Tools > Initialize Git Repository
-2. 
+2. Setting > Create Repository on GitHub > back
+3. click main > "First commit" to Message >Stage and commit all changes
+4. click 'Publish branch as 'origin/main'
 
 behave using docker container steps:
 1. PC local: git clone https://github.com/anhsguy/cpptest.git
