@@ -28,3 +28,4 @@ Steps to push local to hub:
 4. run: docker run anhsguy792/behavedammit_image
 
 remove any image: docker rmi behavedammit_image or docker rmi anhsguy792/behavedammit_image
+Whenever step 4, the image in the hub will be loaded to Local and showing in PC terminal (docker images) even you delete it earlier
