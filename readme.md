@@ -51,3 +51,54 @@ Steps to push local to hub:
 
 remove any image: docker rmi behavedammit_image or docker rmi anhsguy792/behavedammit_image
 Whenever step 4, the image in the hub will be loaded to Local and showing in PC terminal (docker images) even you delete it earlier
+
+
+
+
+Using Jenkins  requirements.txt)
+1. Shell > pip freeze > requirements.txt > empty > add 'behave==1.2.7'
+   
+Steps to run the pytest codes with image 'myjenkins-blueocean:2.414.3-1' in docker container:
+1. run the image
+   docker run --name jenkins-blueocean --restart=on-failure --detach \
+   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+   --publish 8080:8080 --publish 50000:50000 \
+   --volume jenkins-data:/var/jenkins_home \
+   --volume jenkins-docker-certs:/certs/client:ro \
+   myjenkins-blueocean:2.414.3-1
+2. (Jenkins Dashboard) Browse to http://localhost:8080 or http://localhost:8080/blue/organizations/jenkins/pipelines     jyang 3333
+
+
+3. Add Jenkinsfile in github (anhsguy/behavedammit)
+4. Configure > Pipeline script from SCM > Git > URL: https://github.com/anhsguy/behavedammit.git> Branch: main > Save
+5. Build Now > Declarative: Checkout SCM > Checkout > Set up Python Virtual Environment > Run Tests > Declarative : Post Actions
+  It takes about 13s to build
+
++ robot -T FirstTestCase.robot
+values assigned 1 and 2
+==============================================================================
+FirstTestCase                                                                 
+==============================================================================
+TC1 :: My first test case in ride                                     | PASS |
+------------------------------------------------------------------------------
+Launch py File                                                        hello world
+| PASS |
+------------------------------------------------------------------------------
+Calling function from python                                          | PASS |
+------------------------------------------------------------------------------
+Class: sum from python                                                values assigned 1 and 2
+| PASS |
+------------------------------------------------------------------------------
+Class: diff from python                                               | PASS |
+------------------------------------------------------------------------------
+Compare Strings                                                       | PASS |
+------------------------------------------------------------------------------
+String_match                                                          | PASS |
+------------------------------------------------------------------------------
+FirstTestCase                                                         | PASS |
+7 tests, 7 passed, 0 failed
+==============================================================================
+Output:  /var/jenkins_home/workspace/robot_test/output-20231203-205301.xml
+Log:     /var/jenkins_home/workspace/robot_test/log-20231203-205301.html
+Report:  /var/jenkins_home/workspace/robot_test/report-20231203-205301.html
