@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+   agent {
+       docker {
+       image 'myjenkins-blueocean:2.414.3-1'
+       args '-v /var/run/docker.sock:/var/run/docker.sock'
+       }
+   }
+
 
     environment {
         VIRTUAL_ENV = "${WORKSPACE}/venv"
