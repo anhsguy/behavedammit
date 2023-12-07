@@ -1,6 +1,10 @@
 pipeline {
    agent any
 
+   triggers {
+   pollSCM('H/5 * * * *')
+   }
+
     environment {
         VIRTUAL_ENV = "${WORKSPACE}/venv"
         PATH = "${VIRTUAL_ENV}/bin:${PATH}"
